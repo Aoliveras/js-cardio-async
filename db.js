@@ -16,12 +16,46 @@ ex after running delete('user.json'):
 Errors should also be logged (preferably in a human-readable format)
 */
 
+function log(value) {
+  return fs.appendFile('log.txt', `${value} ${Date.now()}\n`);
+}
+
 /**
  * Logs the value of object[key]
  * @param {string} file
  * @param {string} key
  */
-function get(file, key) {}
+
+// W/ Promise
+// function get(file, key) {
+//   // 1. Read File
+//   // 2. Handle promise data
+//   return fs
+//     .readFile(file, 'utf8')
+//     .then(data => {
+//       // 3. Parse data from string
+//       const parsed = JSON.parse(data);
+//       // 4. Use the key to get the value at Object[key]
+//       const value = parsed[key];
+//       if (!value) return log(`ERROR: ${key} Invalid key on ${file}`);
+//       // 5.
+//       return log(value);
+//     })
+//     .catch(err => log(`No such file or directory ${file}`));
+// }
+
+// w/ async-await
+async function get(file, key) {
+  try {
+    const data = await fs.readFile(file, 'utf8');
+    const parsed = JSON.parse(data);
+    const value = parsed[key];
+    if (!value) return log(`ERROR: ${key} Invalid key on ${file}`);
+    return log(value);
+  } catch (err) {
+    log(`No such file or directory ${file}`);
+  }
+}
 
 /**
  * Sets the value of object[key] and rewrites object to file
