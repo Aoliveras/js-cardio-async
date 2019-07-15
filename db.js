@@ -53,7 +53,7 @@ async function get(file, key) {
     if (!value) return log(`ERROR: ${key} Invalid key on ${file}`);
     return log(value);
   } catch (err) {
-    log(`No such file or directory ${file}`);
+    return log(`No such file or directory ${file}`);
   }
 }
 
