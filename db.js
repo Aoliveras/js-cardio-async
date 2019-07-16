@@ -100,9 +100,9 @@ async function remove(file, key) {
     // delete keyToDelete
     delete newObj[key];
     // return object to JSON string.
-    JSON.stringify(newObj);
-    fs.writeFile(file, newObj);
-    return log(newObj);
+    const updatedFile = JSON.stringify(newObj);
+    fs.writeFile(file, updatedFile);
+    return log(updatedFile);
   } catch (err) {
     return log(`No such file or directory ${file}`);
   }

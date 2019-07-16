@@ -1,2 +1,5 @@
 {"firstname":"Scott","lastname":"Roberts","email":"sroberts@talentpath.com","username":"scoot","momma":"super sweet lady"} 1563294960368
 {"firstname":"Scott","lastname":"Roberts","email":"sroberts@talentpath.com","username":"Lil' Boss","momma":"super sweet lady"} 1563294995948
+[object Object] 1563295357454
+No such file or directory scott.json 1563296051095
+{"firstname":"Scott","lastname":"Roberts","email":"sroberts@talentpath.com","username":"Lil' Boss"} 1563296205828
