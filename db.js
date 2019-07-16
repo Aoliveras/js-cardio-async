@@ -63,7 +63,22 @@ async function get(file, key) {
  * @param {string} key
  * @param {string} value
  */
-function set(file, key, value) {}
+async function set(file, key, value) {
+  try {
+    // read file
+    const data = await fs.readFile(file, 'utf8');
+    // handle promise data
+    const parsed = JSON.parse(data);
+    let keyToChange = parsed[key];
+    if (!keyToChange) return log(`ERROR: ${key} Invalid key on ${file}`);
+    keyToChange = value;
+    const newObj = JSON.stringify(parsed);
+    // console.log(newObj);
+    return log(newObj);
+  } catch (err) {
+    return log(`No such file or directory ${file}`);
+  }
+}
 
 /**
  * Deletes key from object and rewrites object to file
