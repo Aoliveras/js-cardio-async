@@ -72,8 +72,8 @@ async function set(file, key, value) {
     parsed[key] = value;
     // return object to JSON string.
     const newObj = JSON.stringify(parsed);
-    fs.writeFile(file, newObj);
-    return log(newObj);
+    await fs.writeFile(file, newObj);
+    return log(`Key: ${key}: ${value} set in ${file}`);
   } catch (err) {
     return log(`No such file or directory ${file}`);
   }
@@ -94,15 +94,11 @@ async function remove(file, key) {
     const keyToDelete = newObj[key];
     // error if key is not present in file object
     if (!keyToDelete) return log(`ERROR: ${key} Invalid key on ${file}`);
-    // console.log(keyToDelete);
-    // delete key and log
-    // return log(keyToDelete);
-    // delete keyToDelete
     delete newObj[key];
     // return object to JSON string.
-    const updatedFile = JSON.stringify(newObj);
-    fs.writeFile(file, updatedFile);
-    return log(updatedFile);
+    const updatedObj = JSON.stringify(newObj);
+    await fs.writeFile(file, updatedObj);
+    return log(`Key: ${key} removed from ${file}`);
   } catch (err) {
     return log(`No such file or directory ${file}`);
   }
@@ -113,14 +109,35 @@ async function remove(file, key) {
  * Gracefully errors if the file does not exist.
  * @param {string} file
  */
-function deleteFile(file) {}
+async function deleteFile(file) {
+  try {
+    const fileRemoved = file;
+    await fs.unlink(file);
+    return log(`Removed ${fileRemoved}`);
+  } catch (err) {
+    return log(`No such file or directory ${file}`);
+  }
+}
 
 /**
  * Creates file with an empty object inside.
  * Gracefully errors if the file already exists.
  * @param {string} file JSON filename
  */
-function createFile(file) {}
+async function createFile(file) {
+  try {
+    await fs.access(file, err => {
+      if (err) {
+        return log(`${file} already exists`);
+      }
+    });
+    // const emptyObj = JSON.stringify({});
+    // fs.writeFile(file, emptyObj);
+    // return log(`${file} created!`);
+  } catch (err) {
+    return log(`${file} already exists`);
+  }
+}
 
 /**
  * Merges all data into a mega object and logs it.

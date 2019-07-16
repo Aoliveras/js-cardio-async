@@ -3,3 +3,35 @@
 [object Object] 1563295357454
 No such file or directory scott.json 1563296051095
 {"firstname":"Scott","lastname":"Roberts","email":"sroberts@talentpath.com","username":"Lil' Boss"} 1563296205828
+ERROR: notthere Invalid key on scott.json 1563296437968
+ERROR: stuff Invalid key on scott.json 1563296534144
+{"firstname":"Scott","lastname":"Roberts","email":"sroberts@talentpath.com","username":"Lil' Boss","stuff":"thisisstuff"} 1563296566841
+{"firstname":"Scott","lastname":"Roberts","email":"sroberts@talentpath.com","username":"Lil' Boss"} 1563296580211
+Removed scott.json 1563297545976
+Removed scott.json 1563297580095
+No such file or directory scott.json 1563297791605
+Removed scott.json 1563297856898
+Removed scott.json 1563297891263
+Removed scott.json 1563297985927
+Removed scott.json 1563298001496
+No such file or directory scott.json 1563298064444
+scott.json already exists 1563298648943
+adam.json already exists 1563298670201
+adam.json already exists 1563298753209
+undefined created! 1563298789286
+undefined created! 1563299131653
+undefined created! 1563299152065
+adam.json already exists 1563299564535
+brennen.json already exists 1563299588853
+brennen.json already exists 1563299806459
+brennan.json already exists 1563300401208
+brennan.json already exists 1563300419564
+brennan.json already exists 1563300523369
+brennan.json created! 1563300568865
+brennan.json created! 1563300664046
+brennan.json created! 1563300814796
+{"firstname":"Scott","lastname":"Roberts","email":"sroberts@talentpath.com","username":"Da Boss"} 1563302554577
+isPimp: YES! set in adam.json 1563302924046
+Removed isPimp from adam.json 1563302949931
+isAwesome: ...meh... set in adam.json 1563303033764
+Key: isAwesome removed from adam.json 1563303061495
