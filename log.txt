@@ -1,10 +1,2 @@
-sroberts@talentpath.com 1563230443867
-Scott 1563230458211
-No such file or directory yourmom.json 1563230969900
-ERROR: yourmom Invalid key on scott.json 1563231095299
-undefined 1563231095299
-ERROR: yomama Invalid key on scott.json 1563231148565
-Scott 1563231572641
-ERROR: farts Invalid key on scott.json 1563258098378
-{"firstname":"Scott","lastname":"Roberts","email":"sroberts@talentpath.com","username":"scoot"} 1563258180365
-No such file or directory poop.json 1563258308738
+{"firstname":"Scott","lastname":"Roberts","email":"sroberts@talentpath.com","username":"scoot","momma":"super sweet lady"} 1563294960368
+{"firstname":"Scott","lastname":"Roberts","email":"sroberts@talentpath.com","username":"Lil' Boss","momma":"super sweet lady"} 1563294995948

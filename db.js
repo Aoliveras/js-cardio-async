@@ -69,11 +69,10 @@ async function set(file, key, value) {
     const data = await fs.readFile(file, 'utf8');
     // handle promise data
     const parsed = JSON.parse(data);
-    let keyToChange = parsed[key];
-    if (!keyToChange) return log(`ERROR: ${key} Invalid key on ${file}`);
-    keyToChange = value;
+    parsed[key] = value;
+    // return object to JSON string.
     const newObj = JSON.stringify(parsed);
-    // console.log(newObj);
+    fs.writeFile(file, newObj);
     return log(newObj);
   } catch (err) {
     return log(`No such file or directory ${file}`);
@@ -85,7 +84,29 @@ async function set(file, key, value) {
  * @param {string} file
  * @param {string} key
  */
-function remove(file, key) {}
+async function remove(file, key) {
+  try {
+    // read file
+    const data = await fs.readFile(file, 'utf8');
+    // handle promise data
+    const parsed = JSON.parse(data);
+    const newObj = JSON.parse(JSON.stringify(parsed));
+    const keyToDelete = newObj[key];
+    // error if key is not present in file object
+    if (!keyToDelete) return log(`ERROR: ${key} Invalid key on ${file}`);
+    // console.log(keyToDelete);
+    // delete key and log
+    // return log(keyToDelete);
+    // delete keyToDelete
+    delete newObj[key];
+    // return object to JSON string.
+    JSON.stringify(newObj);
+    fs.writeFile(file, newObj);
+    return log(newObj);
+  } catch (err) {
+    return log(`No such file or directory ${file}`);
+  }
+}
 
 /**
  * Deletes file.
