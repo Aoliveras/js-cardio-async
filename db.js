@@ -20,6 +20,37 @@ function log(value) {
   return fs.appendFile('log.txt', `${value} ${Date.now()}\n`);
 }
 
+function reset() {
+  const andrew = fs.writeFile(
+    './andrew.json',
+    JSON.stringify({
+      firstname: 'Andrew',
+      lastname: 'Maney',
+      email: 'amaney@talentpath.com',
+    })
+  );
+  const scott = fs.writeFile(
+    './scott.json',
+    JSON.stringify({
+      firstname: 'Scott',
+      lastname: 'Roberts',
+      email: 'sroberts@talentpath.com',
+      username: 'scoot',
+    })
+  );
+  const post = fs.writeFile(
+    './post.json',
+    JSON.stringify({
+      title: 'Async/Await lesson',
+      description: 'How to write asynchronous JavaScript',
+      date: 'July 15, 2019',
+    })
+  );
+}
+//   const log = fs.writeFile('./log.txt', '');
+//   return Promise.all([andrew, scott, post, log]);
+// }
+
 /**
  * Logs the value of object[key]
  * @param {string} file
@@ -126,16 +157,12 @@ async function deleteFile(file) {
  */
 async function createFile(file) {
   try {
-    await fs.access(file, err => {
-      if (err) {
-        return log(`${file} already exists`);
-      }
-    });
-    // const emptyObj = JSON.stringify({});
-    // fs.writeFile(file, emptyObj);
-    // return log(`${file} created!`);
-  } catch (err) {
+    await fs.access(file);
     return log(`${file} already exists`);
+  } catch (err) {
+    const emptyObj = JSON.stringify({});
+    await fs.writeFile(file, emptyObj);
+    return log(`${file} created!`);
   }
 }
 
@@ -199,4 +226,5 @@ module.exports = {
   union,
   intersect,
   difference,
+  reset,
 };
